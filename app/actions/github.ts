@@ -7,22 +7,27 @@ interface GitHubStats {
   topRepos: Array<{ name: string; stars: number; url: string }>;
 }
 
+interface GitHubRepo {
+  name: string;
+  language: string | null;
+  stargazers_count: number;
+  html_url: string;
+}
+
 export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
   try {
     const response = await fetch(`https://api.github.com/users/${username}/repos`);
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch GitHub data');
     }
 
-    const repos = await response.json();
+    const repos: GitHubRepo[] = await response.json();
 
-    // let totalStars = 0;
     const languageCount: Record<string, number> = {};
     const repoList: Array<{ name: string; stars: number; url: string }> = [];
 
-    repos.forEach((repo: any) => {
-      // totalStars += repo.stargazers_count;
+    repos.forEach((repo) => {
       if (repo.language) {
         languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
       }
@@ -40,7 +45,7 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
         percentage: Number(((count / totalRepos) * 100).toFixed(2))
       }))
       .sort((a, b) => b.percentage - a.percentage)
-      .slice(0, 5);  // Top 6 languages
+      .slice(0, 5);  // Top 5 languages
 
     const topRepos = repoList
       .sort((a, b) => b.stars - a.stars)
@@ -57,4 +62,3 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
     throw error;
   }
 }
-
