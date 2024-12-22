@@ -186,7 +186,7 @@ export default function ContactPage() {
         {/* Footer */}
         <footer className="max-w-4xl mx-auto mt-24 pt-8 border-t">
           <p className="text-center text-sm text-muted-foreground">
-            © 2023 Tushar Negi. All rights reserved.
+            © 2025 Tushar Negi. All rights reserved.
           </p>
         </footer>
       </div>
