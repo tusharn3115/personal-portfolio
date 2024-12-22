@@ -1,101 +1,177 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { useState } from 'react'
+import Link from 'next/link'
+import { Github, Twitter, Moon, Sun, Code, Heart, Tv, Music, Mail } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import ProjectCard from '../components/ProjectCard'
+import GithubStats from '../components/GithubStats'
+import SkillBadge from '../components/SkillBadge'
+import Logo from '../components/Logo'
+
+export default function Portfolio() {
+  const [isDark, setIsDark] = useState(true)
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark' : ''}`}>
+      <div className="bg-background text-foreground min-h-screen px-4 sm:px-8 py-8">
+        {/* Navigation */}
+        <nav className="max-w-4xl mx-auto flex items-center justify-between mb-16">
+          <div className="flex items-center gap-4">
+            <Logo className="text-primary" />
+            <div className="flex gap-6">
+              <Link href="/" className="text-primary hover:text-primary/80 transition-colors">
+                home
+              </Link>
+              <Link href="/projects" className="text-primary hover:text-primary/80 transition-colors">
+                projects
+              </Link>
+              <Link href="/contact" className="text-primary hover:text-primary/80 transition-colors">
+                contact
+              </Link>
+            </div>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsDark(!isDark)}
+            className="rounded-full"
+          >
+            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
+        </nav>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {/* Main Content */}
+        <main className="max-w-4xl mx-auto space-y-16">
+          {/* Hero Section */}
+          <section className="space-y-6">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl animate-in fade-in slide-in-from-bottom-3 duration-500">
+              hey, I&apos;m tushar negi
+            </h1>
+            <div className="prose prose-gray dark:prose-invert max-w-none space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                MERN Developer ⚛️ | Anime Fan | Tech Enthusiast 🚀 | Creating web apps with creativity ✨
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                I&apos;m a passionate full-stack developer specializing in the MERN stack. With a keen eye for design and a love for clean, efficient code, I bring creative web applications to life. My enthusiasm for technology extends beyond just coding – I&apos;m always exploring the latest tech trends and finding ways to incorporate them into my projects.
+              </p>
+            </div>
+          </section>
+
+          {/* Skills Section */}
+          <section className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-900">
+            <h2 className="text-2xl font-semibold tracking-tight">my tech stack</h2>
+            <div className="flex flex-wrap gap-2">
+              <SkillBadge skill="React" />
+              <SkillBadge skill="Node.js" />
+              <SkillBadge skill="Next.js" />
+              <SkillBadge skill="TypeScript" />
+              <SkillBadge skill="Tailwind CSS" />
+              <SkillBadge skill="Git" />
+              <SkillBadge skill="GitHub" />
+              <SkillBadge skill="HTML" />
+              <SkillBadge skill="CSS" />
+              <SkillBadge skill="Javascript" />
+            </div>
+          </section>
+
+          {/* GitHub Stats Section */}
+          <section className="space-y-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+            <h2 className="text-2xl font-semibold tracking-tight">days i code</h2>
+            <GithubStats />
+          </section>
+
+          {/* Projects Section */}
+          <section className="space-y-6 animate-in fade-in slide-in-from-bottom-7 duration-1100">
+            <h2 className="text-2xl font-semibold tracking-tight">featured projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ProjectCard
+                title="E-commerce Platform"
+                description="A full-stack e-commerce solution with real-time inventory management"
+                link="/projects#ecommerce"
+              />
+              <ProjectCard
+                title="Task Management App"
+                description="A collaborative task management tool with real-time updates"
+                link="/projects#taskmanager"
+              />
+            </div>
+            <div className="text-center mt-8">
+              <Button asChild>
+                <Link href="/projects">View All Projects</Link>
+              </Button>
+            </div>
+          </section>
+
+          {/* Interests Section */}
+          <section className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1200">
+            <h2 className="text-2xl font-semibold tracking-tight">what I love</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Card>
+                <CardContent className="p-6 flex items-center gap-4">
+                  <Code className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-medium">MERN Stack</h3>
+                    <p className="text-sm text-muted-foreground">Building with cutting-edge tech</p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-6 flex items-center gap-4">
+                  <Tv className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-medium">Anime</h3>
+                    <p className="text-sm text-muted-foreground">Exploring vibrant stories</p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-6 flex items-center gap-4">
+                  <Music className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-medium">Music</h3>
+                    <p className="text-sm text-muted-foreground">Creating and enjoying melodies</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section className="space-y-6 animate-in fade-in slide-in-from-bottom-9 duration-1300">
+            <h2 className="text-2xl font-semibold tracking-tight">get in touch</h2>
+            <div className="flex flex-wrap gap-4">
+              <Button asChild variant="outline">
+                <Link href="https://github.com/tusharn3115" className="gap-2" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="https://twitter.com/tushxr05" className="gap-2" target="_blank" rel="noopener noreferrer">
+                  <Twitter className="h-4 w-4" />
+                  X (Twitter)
+                </Link>
+              </Button>
+              <Button asChild>
+                <Link href="/contact" className="gap-2" target="_blank" rel="noopener noreferrer">
+                  <Mail className="h-4 w-4" />
+                  Contact Me
+                </Link>
+              </Button>
+            </div>
+          </section>
+        </main>
+
+        {/* Footer */}
+        <footer className="max-w-4xl mx-auto mt-24 pt-8 border-t">
+          <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-1">
+            Made with <Heart className="h-4 w-4 text-red-500" /> by tushar negi
+          </p>
+        </footer>
+      </div>
     </div>
-  );
+  )
 }
+
