@@ -17,12 +17,12 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
 
     const repos = await response.json();
 
-    let totalStars = 0;
+    // let totalStars = 0;
     const languageCount: Record<string, number> = {};
     const repoList: Array<{ name: string; stars: number; url: string }> = [];
 
     repos.forEach((repo: any) => {
-      totalStars += repo.stargazers_count;
+      // totalStars += repo.stargazers_count;
       if (repo.language) {
         languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
       }
@@ -40,7 +40,7 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
         percentage: Number(((count / totalRepos) * 100).toFixed(2))
       }))
       .sort((a, b) => b.percentage - a.percentage)
-      .slice(0, 6);  // Top 6 languages
+      .slice(0, 5);  // Top 6 languages
 
     const topRepos = repoList
       .sort((a, b) => b.stars - a.stars)
@@ -48,7 +48,7 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
 
     return {
       totalRepos,
-      totalContributions: 766, // Static value as requested
+      totalContributions: 770, 
       languages,
       topRepos
     };

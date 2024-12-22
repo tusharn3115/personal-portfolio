@@ -8,28 +8,28 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
 const projects = [
   {
-    id: 'ecommerce',
-    title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce solution with real-time inventory management, secure payment integration, and a responsive design for optimal user experience across devices.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux', 'Stripe'],
-    githubLink: 'https://github.com/tusharnegi/ecommerce-platform',
-    liveLink: 'https://ecommerce-platform-demo.com'
+    id: 'devportfolio',
+    title: 'Portfolio Website',
+    description: "Showcasing my web development skills, projects, and achievements with a seamless, interactive experience enhanced by smooth animations and transitions.",
+    technologies: ['React', 'Node.js', 'Tailwind', 'Typescript', 'Framer-Motion'],
+    githubLink: 'https://github.com/tusharn3115/dev-portfolio',
+    liveLink: 'https://dev-portfolio-livid-three.vercel.app/'
   },
   {
-    id: 'taskmanager',
-    title: 'Task Management App',
-    description: 'A collaborative task management tool with real-time updates, user authentication, and project organization features. Includes a drag-and-drop interface for easy task prioritization.',
-    technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Socket.io'],
-    githubLink: 'https://github.com/tusharnegi/task-manager',
-    liveLink: 'https://task-manager-demo.com'
+    id: 'significo',
+    title: 'Significo',
+    description: 'Significo project showcasing my animation skills, delivering a smooth and seamless experience with interactive, dynamic design elements.',
+    technologies: ['HTML', 'CSS', 'Javascript', 'GSAP', 'Lenis'],
+    githubLink: 'https://github.com/tusharn3115/significo',
+    liveLink: 'https://significo-iota.vercel.app/'
   },
   {
-    id: 'weatherapp',
-    title: 'Weather Forecast App',
-    description: 'A sleek weather application that provides real-time weather data and forecasts. Features include location-based weather, interactive maps, and severe weather alerts.',
-    technologies: ['React Native', 'Expo', 'OpenWeatherMap API', 'Redux Toolkit'],
-    githubLink: 'https://github.com/tusharnegi/weather-app',
-    liveLink: 'https://weather-app-demo.com'
+    id: 'cliniccare',
+    title: 'ClinicCare - Doctor Appointment App',
+    description: "ClinicCare is a doctors appointment platform offering seamless booking, profile management, and clinic details with a user-friendly interface.",
+    technologies: ['React', 'Tailwind', 'NodeJs', 'MongoDB', "Postman"],
+    githubLink: 'https://github.com/tusharn3115/ClinicCare',
+    liveLink: 'https://clinic-care-three.vercel.app/'
   }
 ]
 
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
               my projects
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700">
-              Here's a collection of my recent projects. Each one represents a unique challenge and learning experience.
+              Here&apos;s a collection of my recent projects. Each one represents a unique challenge and learning experience.
             </p>
           </section>
 
@@ -109,4 +109,3 @@ export default function ProjectsPage() {
     </div>
   )
 }
-

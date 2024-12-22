@@ -87,14 +87,14 @@ export default function Portfolio() {
             <h2 className="text-2xl font-semibold tracking-tight">featured projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ProjectCard
-                title="E-commerce Platform"
-                description="A full-stack e-commerce solution with real-time inventory management"
-                link="/projects#ecommerce"
+                title="DevPortfolio"
+                description="Showcasing my web development skills, projects, and achievements with a seamless, interactive experience, featuring smooth animations and dynamic transitions."
+                link="/projects"
               />
               <ProjectCard
-                title="Task Management App"
-                description="A collaborative task management tool with real-time updates"
-                link="/projects#taskmanager"
+                title="ClinicCare"
+                description="ClinicCare is a doctor's appointment platform offering seamless booking, profile management, and clinic details with a user-friendly interface."
+                link="/projects#cliniccare"
               />
             </div>
             <div className="text-center mt-8">
@@ -155,7 +155,7 @@ export default function Portfolio() {
                 </Link>
               </Button>
               <Button asChild>
-                <Link href="/contact" className="gap-2" target="_blank" rel="noopener noreferrer">
+                <Link href="/contact" className="gap-2">
                   <Mail className="h-4 w-4" />
                   Contact Me
                 </Link>
