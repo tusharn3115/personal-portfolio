@@ -102,7 +102,7 @@ export default function ProjectsPage() {
         {/* Footer */}
         <footer className="max-w-4xl mx-auto mt-24 pt-8 border-t">
           <p className="text-center text-sm text-muted-foreground">
-            © 2023 tushar negi. All rights reserved.
+            © 2025 tushar negi. All rights reserved.
           </p>
         </footer>
       </div>
