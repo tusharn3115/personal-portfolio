@@ -18,8 +18,11 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
   try {
     const response = await fetch(`https://api.github.com/users/${username}/repos`);
 
+    // Log response status to debug any issues
     if (!response.ok) {
-      throw new Error('Failed to fetch GitHub data');
+      const errorMessage = `Failed to fetch GitHub data: ${response.statusText} (${response.status})`;
+      console.error(errorMessage);
+      throw new Error(errorMessage);
     }
 
     const repos: GitHubRepo[] = await response.json();
@@ -53,12 +56,17 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
 
     return {
       totalRepos,
-      totalContributions: 770, 
+      totalContributions: 770,  // Adjust as needed
       languages,
       topRepos
     };
-  } catch (error) {
-    console.error('Error fetching GitHub stats:', error);
-    throw error;
+  } catch (error: unknown) {
+    // Use a type guard to handle 'unknown' and cast it to a known type
+    if (error instanceof Error) {
+      console.error('Error fetching GitHub stats:', error.message);
+    } else {
+      console.error('Unknown error occurred while fetching GitHub stats.');
+    }
+    throw error; // Re-throw error to propagate it
   }
 }
