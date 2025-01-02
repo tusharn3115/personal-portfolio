@@ -56,7 +56,7 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
 
     return {
       totalRepos,
-      totalContributions: 770,  // Adjust as needed
+      totalContributions: 815,  // Adjust as needed
       languages,
       topRepos
     };
