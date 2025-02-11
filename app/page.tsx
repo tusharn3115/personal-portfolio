@@ -51,7 +51,7 @@ export default function Portfolio() {
             </h1>
             <div className="prose prose-gray dark:prose-invert max-w-none space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                MERN Developer ⚛️ | Anime Fan | Tech Enthusiast 🚀 | Creating web apps with creativity ✨
+                MERN Developer ⚛️ | Tech Enthusiast 🚀 | Creating web apps with creativity ✨
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 I&apos;m a passionate full-stack developer specializing in the MERN stack. With a keen eye for design and a love for clean, efficient code, I bring creative web applications to life. My enthusiasm for technology extends beyond just coding – I&apos;m always exploring the latest tech trends and finding ways to incorporate them into my projects.
